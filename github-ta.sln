@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{54CFD1C6-3C69-4F0E-8E66-72B645AB1C7C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{EFA98BB6-E2D4-43BB-ABD6-D002DFE0CA20}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pages", "Pages\Pages.csproj", "{40D0C403-47CF-4D47-8151-8642EC1542EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{54CFD1C6-3C69-4F0E-8E66-72B645AB1C7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54CFD1C6-3C69-4F0E-8E66-72B645AB1C7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54CFD1C6-3C69-4F0E-8E66-72B645AB1C7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFA98BB6-E2D4-43BB-ABD6-D002DFE0CA20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFA98BB6-E2D4-43BB-ABD6-D002DFE0CA20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFA98BB6-E2D4-43BB-ABD6-D002DFE0CA20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFA98BB6-E2D4-43BB-ABD6-D002DFE0CA20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40D0C403-47CF-4D47-8151-8642EC1542EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40D0C403-47CF-4D47-8151-8642EC1542EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40D0C403-47CF-4D47-8151-8642EC1542EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40D0C403-47CF-4D47-8151-8642EC1542EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
