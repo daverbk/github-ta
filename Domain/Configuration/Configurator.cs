@@ -22,7 +22,7 @@ namespace Domain.Configuration
 
         private static IConfiguration BuildConfiguration()
         {
-            var basePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            var basePath = Path.GetDirectoryName("/Users/ksusha/Desktop/github-ta/Domain/bin");
             var builder = new ConfigurationBuilder()
                 .SetBasePath(basePath)
                 .AddJsonFile("appsettings.json");
