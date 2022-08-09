@@ -1,14 +1,11 @@
-using System.Collections.Concurrent;
-using Domain.Configuration;
 using OpenQA.Selenium;
-using Xunit.Sdk;
 
 namespace Domain.WebCore;
 
 public class Browser
 {
     [field: ThreadStatic]
-    public static ThreadLocal<IWebDriver> Driver { get; private set; } = null!;
+    public static IWebDriver Driver { get; private set; }
 
     public static void InitBrowser()
     {
@@ -19,13 +16,13 @@ public class Browser
             _ => throw new ArgumentException("Check that your BrowserType property in appsettings.json is set to either chrome or firefox.")
         };
 
-        Driver.Value!.Manage().Window.Maximize();
-        Driver.Value!.Manage().Cookies.DeleteAllCookies();
-        Driver.Value!.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
+        Driver.Manage().Window.Maximize();
+        Driver.Manage().Cookies.DeleteAllCookies();
+        Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
     }
     
     public static void QuitDriver()
     {
-        Driver.Value!.Quit();
+        Driver.Quit();
     }
 }

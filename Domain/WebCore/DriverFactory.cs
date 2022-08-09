@@ -8,7 +8,7 @@ namespace Domain.WebCore
 {
     public class DriverFactory
     {
-        public static ThreadLocal<IWebDriver> GetChromeDriver()
+        public static IWebDriver GetChromeDriver()
         {
             var chromeOptions = new ChromeOptions();
             
@@ -19,10 +19,10 @@ namespace Domain.WebCore
             chromeOptions.SetLoggingPreference(LogType.Driver, LogLevel.All);
 
             new DriverManager().SetUpDriver(new ChromeConfig());
-            return new ThreadLocal<IWebDriver>(()=> new ChromeDriver(chromeOptions));
+            return new ChromeDriver(chromeOptions);
         }
 
-        public static ThreadLocal<IWebDriver> GetFirefoxDriver()
+        public static IWebDriver GetFirefoxDriver()
         {
             var mimeTypes =
                 "image/png,image/gif,image/jpeg,image/pjpeg,application/pdf,text/csv,application/vnd.ms-excel," +
@@ -41,7 +41,7 @@ namespace Domain.WebCore
             ffOptions.SetLoggingPreference(LogType.Driver, LogLevel.All);
 
             new DriverManager().SetUpDriver(new FirefoxConfig());
-            return new ThreadLocal<IWebDriver>(()=> new FirefoxDriver(ffOptions));
+            return new FirefoxDriver(ffOptions);
         }
     }
 }
