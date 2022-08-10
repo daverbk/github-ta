@@ -1,3 +1,4 @@
+using System.Net.Http.Headers;
 using System.Runtime.Serialization;
 using System.Text.Json;
 using NLog;
@@ -8,8 +9,18 @@ public class HttpClientExtended
 {
     private readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
-    public static HttpResponseMessage LastCallResponse { get; private set; } = null!;
+    public HttpClient Client { get; set; }
 
+    public static HttpResponseMessage LastCallResponse { get; private set; } = null!;
+    
+    public HttpClientExtended(HttpClient client)
+    {
+        Client = client;
+        
+        Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/vnd.github+json"));
+        Client.DefaultRequestHeaders.UserAgent.Add(ProductInfoHeaderValue.Parse("PostmanRuntime/7.29.2"));
+    }
+    
     public async Task<T> ExecuteAsync<T>(Func<Task<HttpResponseMessage>> requestMethod)
     {
         var httpResponseMessage = await requestMethod();
@@ -44,16 +55,16 @@ public class HttpClientExtended
     
     private void LogRequest(HttpRequestMessage request)
     {
-        _logger.Debug($"{request.Method} request to: {request.RequestUri}");
+        _logger.Info($"{request.Method} request to: {request.RequestUri}");
     }
 
     private void LogResponse(HttpResponseMessage response)
     {
-        _logger.Error(
+        _logger.Info(
             $"Error retrieving response. Check inner details for more info. Error message: {response.Headers.Warning}");
         
-        _logger.Debug($"Request responded with status code : {response.StatusCode}");
+        _logger.Info($"Request responded with status code : {response.StatusCode}");
         
-        _logger.Debug(response.Content);
+        _logger.Info(response.Content);
     }
 }

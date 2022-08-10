@@ -6,16 +6,13 @@ public class ApiTestFixture : IDisposable
 {
     public HttpClientExtended HttpClientExtended { get; set; }
 
-    public HttpClient HttpClient { get; set; }
-    
     public ApiTestFixture()
     {
-        HttpClient = new HttpClient();
-        HttpClientExtended = new HttpClientExtended();
+        HttpClientExtended = new HttpClientExtended(new HttpClient());
     }
 
     public void Dispose()
     {
-        HttpClient.Dispose();
+        HttpClientExtended.Client.Dispose();
     }
 }
