@@ -2,12 +2,12 @@ using Domain.WebCore;
 
 namespace Tests;
 
-public class DriverFixture : IDisposable
+public class BrowserTestFixture : IDisposable
 {
-    public DriverFixture()
+    public BrowserTestFixture()
     {
         Browser.InitBrowser();
     }
-    
+
     public void Dispose() => Browser.QuitDriver();
 }

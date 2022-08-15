@@ -1,3 +1,4 @@
+using Domain.Configuration;
 using OpenQA.Selenium;
 
 namespace Domain.WebCore;
