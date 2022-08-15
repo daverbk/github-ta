@@ -1,7 +1,7 @@
 using System.Reflection;
 using Microsoft.Extensions.Configuration;
 
-namespace Domain
+namespace Domain.Configuration
 {
     public static class Configurator
     {
