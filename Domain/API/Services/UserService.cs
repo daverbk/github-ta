@@ -1,4 +1,3 @@
-using Domain.Configuration;
 using Domain.Models.API;
 
 namespace Domain.API.Services;
@@ -14,7 +13,7 @@ public class UserService
         _httpHelper = httpHelper;
     }
 
-    public async Task<GitHubUser> GetUserByLogin(string userLogin)
+    public async Task<GitHubUser> GetUserByLoginAsync(string userLogin)
     {
         return await _httpHelper.ExecuteCallAsync<GitHubUser>(async () =>
             await _httpClient.GetAsync($"/users/{userLogin}"));
