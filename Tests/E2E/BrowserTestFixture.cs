@@ -1,6 +1,6 @@
 using Domain.WebCore;
 
-namespace Tests;
+namespace Tests.E2E;
 
 public class BrowserTestFixture : IDisposable
 {
