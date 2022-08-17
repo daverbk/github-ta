@@ -1,5 +1,5 @@
-using System.Net.Http.Headers;
 using Domain.API;
+using Domain.Fakers;
 
 namespace Tests.API;
 
@@ -9,14 +9,18 @@ public class ApiTestFixture : IDisposable
 
     public HttpHelper Helper { get; }
 
+    public RepositoryFaker RepositoryFaker { get; }
+
     public ApiTestFixture()
     {
+        RepositoryFaker = new RepositoryFaker();
+        
         Helper = new HttpHelper();
-        Client = new HttpClient();
-
-        Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/vnd.github+json"));
-        Client.DefaultRequestHeaders.UserAgent.Add(ProductInfoHeaderValue.Parse("PostmanRuntime/7.29.2"));
+        Client = new HttpClientFactory().InitializeDefaultClient();
     }
-    
-    public void Dispose() => Client.Dispose();
+
+    public void Dispose()
+    {
+        Client.Dispose();
+    }
 }
