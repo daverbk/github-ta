@@ -12,7 +12,7 @@ public class HttpClientFactory
         var authenticationString = $"{UserConfigurator.PlsvslUser.Login}:{UserConfigurator.PlsvslUser.Token}";
         var base64EncodedAuthenticationString = EncodeAuthenticationString(authenticationString);
 
-        httpClient.BaseAddress = new Uri(Configurator.BaseUrl);
+        httpClient.BaseAddress = new Uri(Configurator.BaseApiUrl);
         
         httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/vnd.github+json"));
         httpClient.DefaultRequestHeaders.UserAgent.Add(ProductInfoHeaderValue.Parse("PostmanRuntime/7.29.2"));

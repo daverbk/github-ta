@@ -21,25 +21,30 @@ public class Repository : BaseLoggedApiTest, IClassFixture<ApiTestFixture>
     public async void CreateNewRepositoryTest()
     {
         const HttpStatusCode expectedStatusCode = HttpStatusCode.Created;
-
         var newRepository = _apiTestFixture.RepositoryFaker.Generate();
 
         var addedRepo = await _repositoryService.CreateRepositoryAsync(newRepository);
         var actualStatusCode = HttpHelper.LastCallResponse.StatusCode;
 
-        Assert.Equal(newRepository.Name, addedRepo.Name);
-        Assert.Equal(expectedStatusCode, actualStatusCode);
+        Assert.Multiple(() =>
+        {
+            Assert.Equal(newRepository.Name, addedRepo.Name);
+            Assert.Equal(expectedStatusCode, actualStatusCode);
+        });
     }
     
     [Fact]
     public async void GetAllRepositoriesTest()
     {
         const HttpStatusCode expectedStatusCode = HttpStatusCode.OK;
+        
         var addedRepos = await _repositoryService.GetAllRepositoriesAsync();
-
         var actualStatusCode = HttpHelper.LastCallResponse.StatusCode;
 
-        Assert.NotEmpty(addedRepos);
-        Assert.Equal(expectedStatusCode, actualStatusCode);
+        Assert.Multiple(() =>
+        {
+            Assert.NotEmpty(addedRepos);
+            Assert.Equal(expectedStatusCode, actualStatusCode);
+        });
     }
 }

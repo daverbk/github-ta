@@ -1,8 +1,6 @@
 using System.Net;
-using Domain;
 using Domain.API;
 using Domain.API.Services;
-using Domain.Configuration;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -32,13 +30,10 @@ public class User : BaseLoggedApiTest, IClassFixture<ApiTestFixture>
         var actualUserId = user.Id;
         var actualStatusCode = HttpHelper.LastCallResponse.StatusCode;
         
-        Assert.Equal(expectedUserId, actualUserId);
-        Assert.Equal(expectedStatusCode, actualStatusCode);
-    }
-
-    [Fact]
-    public void Test()
-    {
-        new TestDataCleanUp(_apiTestFixture.Client, _apiTestFixture.Helper).CleanUpRepositories(UserConfigurator.PlsvslUser);
+        Assert.Multiple(() =>
+            { 
+                Assert.Equal(expectedUserId, actualUserId);
+                Assert.Equal(expectedStatusCode, actualStatusCode);  
+            });
     }
 }

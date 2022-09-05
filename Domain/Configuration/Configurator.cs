@@ -9,11 +9,9 @@ namespace Domain.Configuration
 
         private static IConfiguration Configuration => Config.Value;
 
-        public static string BaseUrl => Configuration[nameof(BaseUrl)];
+        public static string BaseApiUrl => Configuration[nameof(BaseApiUrl)];
         
         public static string BrowserType => Configuration[nameof(BrowserType)];
-        
-        public static int SeleniumWaitTimeout => int.Parse(Configuration[nameof(SeleniumWaitTimeout)]);
 
         static Configurator()
         {

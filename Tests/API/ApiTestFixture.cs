@@ -1,4 +1,6 @@
+using Domain;
 using Domain.API;
+using Domain.Configuration;
 using Domain.Fakers;
 
 namespace Tests.API;
@@ -14,13 +16,14 @@ public class ApiTestFixture : IDisposable
     public ApiTestFixture()
     {
         RepositoryFaker = new RepositoryFaker();
-        
+
         Helper = new HttpHelper();
         Client = new HttpClientFactory().InitializeDefaultClient();
     }
 
-    public void Dispose()
+    public async void Dispose()
     {
+        await new TestDataCleanUp(Client, Helper).CleanUpRepositoriesAsync(UserConfigurator.PlsvslUser);
         Client.Dispose();
     }
 }

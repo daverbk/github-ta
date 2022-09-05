@@ -15,7 +15,7 @@ public class TestDataCleanUp
         _helper = helper;
     }
 
-    public async void CleanUpRepositories(User user)
+    public async Task CleanUpRepositoriesAsync(User user)
     {
         var repositoryService = new RepositoriesService(_client, _helper);
         
@@ -23,7 +23,7 @@ public class TestDataCleanUp
 
         foreach (var repository in addedRepos)
         {
-            await repositoryService.DeleteRepository(user, repository);
+            await repositoryService.DeleteRepositoryAsync(user, repository);
         }
     }
 }
